@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ThingDefs>
+
+  <ThingDef Name="BasePawn" Abstract="True">
+    <thingClass>Pawn</thingClass>
+    <category>Pawn</category>
+    <selectable>true</selectable>
+    <tickerType>Normal</tickerType>
+    <altitudeLayer>Pawn</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <hasTooltip>true</hasTooltip>
+    <soundImpactDefault>BulletImpactFlesh</soundImpactDefault>
+    <inspectorTabs>
+      <li>ITab_Pawn_Health</li>
+      <li>ITab_Pawn_Needs</li>
+      <li>ITab_Pawn_Character</li>
+      <li>ITab_Pawn_Training</li>
+      <li>ITab_Pawn_Gear</li>
+      <li>ITab_Pawn_Guest</li>
+      <li>ITab_Pawn_Prisoner</li>
+    </inspectorTabs>
+    <comps>
+      <li>
+        <compClass>CompAttachBase</compClass>
+      </li>
+    </comps>
+    <drawGUIOverlay>true</drawGUIOverlay>
+  </ThingDef>
+  
+  <ThingDef ParentName="BasePawn" Name="BaseAnimal" Abstract="True">
+    <statBases>
+      <Flammability>1.0</Flammability>
+      <LeatherAmount>20</LeatherAmount>
+    </statBases>
+    <race>
+      <thinkTree>Animal</thinkTree>
+      <minFoodPreferability>Plant</minFoodPreferability>
+      <isFlesh>true</isFlesh>
+      <hasGenders>true</hasGenders>
+      <nameGenerator>NamerAnimalGeneric</nameGenerator>
+      <manhunterOnDamageChance>0.0125</manhunterOnDamageChance>
+      <nameOnNuzzleChance>0.5</nameOnNuzzleChance>
+      <hediffGiverSets>
+        <li>OrganicStandard</li>
+      </hediffGiverSets>
+    </race>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseAnimal">
+    <defName>Thrumbo</defName>
+    <label>thrumbo</label>
+    <description>A gigantic creature of unknown origin. The thrumbo is gentle by nature, but extremely dangerous when enraged. Its long fur is exceptionally beautiful and valuable, and its razor-sharp horn is very valuable in most markets. Legends say that an old thrumbo is the wisest creature in the universe - it simply chooses not to speak.</description>
+    <statBases>
+      <MoveSpeed>5.25</MoveSpeed>
+      <ComfyTemperatureMin>-65</ComfyTemperatureMin>
+      <MarketValue>4400</MarketValue>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <hasStandardCommand>true</hasStandardCommand>
+        <projectileDef>Bullet_PumpShotgun</projectileDef>
+        <warmupTicks>90</warmupTicks>
+        <range>16</range>
+        <soundCast>ShotShotgun</soundCast>
+        <soundCastTail>GunTail_Heavy</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+      <li>
+        <verbClass>Verb_MeleeAttack</verbClass>
+        <defaultCooldownTicks>110</defaultCooldownTicks>
+        <meleeDamageBaseAmount>22</meleeDamageBaseAmount>
+        <meleeDamageDef>Scratch</meleeDamageDef>
+        <linkedBodyPartsGroup>HornAttackTool</linkedBodyPartsGroup>
+      </li>
+    </verbs>
+    <race>
+      <body>QuadrupedAnimalWithHoovesAndHorn</body>
+      <deathActionWorkerClass>DeathActionWorker_DropBodyParts</deathActionWorkerClass>
+      <herdAnimal>true</herdAnimal>
+      <baseBodySize>3.5</baseBodySize>
+      <baseHungerRate>4.5</baseHungerRate>
+      <baseHealthScale>13.0</baseHealthScale>
+      <diet>HerbivorousAndDendrovorous</diet>
+      <leatherColor>(233,233,233)</leatherColor>
+      <leatherInsulation>2.00</leatherInsulation>
+      <leatherCommonalityFactor>0.1</leatherCommonalityFactor>
+      <leatherMarketValue>60</leatherMarketValue>
+      <leatherLabel>thrumbofur</leatherLabel>
+      <leatherStatFactors>
+        <ArmorRating_Blunt>3.5</ArmorRating_Blunt>
+        <ArmorRating_Sharp>3.0</ArmorRating_Sharp>
+        <ArmorRating_Heat>3.2</ArmorRating_Heat>
+      </leatherStatFactors>
+      <trainableIntelligence>Advanced</trainableIntelligence>
+      <gestationPeriodDays>300</gestationPeriodDays>
+      <manhunterOnDamageChance>1</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>0.012</manhunterOnTameFailChance>
+      <wildness>0.985</wildness>
+      <nuzzleChancePerHour>0.005</nuzzleChancePerHour>
+      <lifeExpectancy>220</lifeExpectancy>
+      <lifeStageAges>
+        <li>
+          <def>AnimalBaby</def>
+          <minAge>0</minAge>
+        </li>
+        <li>
+          <def>AnimalJuvenile</def>
+          <minAge>6.0</minAge>
+        </li>
+        <li>
+          <def>AnimalAdult</def>
+          <minAge>25.0</minAge>
+          <soundCall>Pawn_Thrumbo_Call</soundCall>
+          <soundAngry>Pawn_Thrumbo_Angry</soundAngry>
+          <soundWounded>Pawn_Thrumbo_Pain</soundWounded>
+          <soundDeath>Pawn_Thrumbo_Death</soundDeath>
+        </li>
+      </lifeStageAges>
+      <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+    </race>
+  </ThingDef>
+
+  
+</ThingDefs>
