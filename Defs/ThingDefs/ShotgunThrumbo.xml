@@ -18,6 +18,7 @@
       <li>ITab_Pawn_Gear</li>
       <li>ITab_Pawn_Guest</li>
       <li>ITab_Pawn_Prisoner</li>
+      <li>ITab_Pawn_Social</li>
     </inspectorTabs>
     <comps>
       <li>
@@ -26,16 +27,16 @@
     </comps>
     <drawGUIOverlay>true</drawGUIOverlay>
   </ThingDef>
-  
+
   <ThingDef ParentName="BasePawn" Name="BaseAnimal" Abstract="True">
     <statBases>
       <Flammability>1.0</Flammability>
       <LeatherAmount>20</LeatherAmount>
     </statBases>
     <race>
-      <thinkTree>Animal</thinkTree>
-      <minFoodPreferability>Plant</minFoodPreferability>
-      <isFlesh>true</isFlesh>
+      <thinkTreeMain>Animal</thinkTreeMain>
+      <thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+      <minFoodPreferability>NeverForNutrition</minFoodPreferability>
       <hasGenders>true</hasGenders>
       <nameGenerator>NamerAnimalGeneric</nameGenerator>
       <manhunterOnDamageChance>0.0125</manhunterOnDamageChance>
@@ -44,6 +45,11 @@
         <li>OrganicStandard</li>
       </hediffGiverSets>
     </race>
+    <recipes>
+      <li>ExciseCarcinoma</li>
+      <li>RemoveBodyPart</li>
+      <li>Euthanize</li>
+    </recipes>
   </ThingDef>
 
   <ThingDef ParentName="BaseAnimal">
@@ -54,6 +60,8 @@
       <MoveSpeed>5.25</MoveSpeed>
       <ComfyTemperatureMin>-65</ComfyTemperatureMin>
       <MarketValue>4400</MarketValue>
+      <MeatAmount>140</MeatAmount>
+      <!-- more than implied by body size -->
     </statBases>
     <verbs>
       <li>
@@ -81,7 +89,7 @@
       <baseBodySize>3.5</baseBodySize>
       <baseHungerRate>4.5</baseHungerRate>
       <baseHealthScale>13.0</baseHealthScale>
-      <diet>HerbivorousAndDendrovorous</diet>
+      <foodType>VegetarianRoughAnimal, DendrovoreAnimal</foodType>
       <leatherColor>(233,233,233)</leatherColor>
       <leatherInsulation>2.00</leatherInsulation>
       <leatherCommonalityFactor>0.1</leatherCommonalityFactor>
@@ -93,11 +101,11 @@
         <ArmorRating_Heat>3.2</ArmorRating_Heat>
       </leatherStatFactors>
       <trainableIntelligence>Advanced</trainableIntelligence>
-      <gestationPeriodDays>300</gestationPeriodDays>
+      <gestationPeriodDays>80</gestationPeriodDays>
       <manhunterOnDamageChance>1</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.012</manhunterOnTameFailChance>
       <wildness>0.985</wildness>
-      <nuzzleChancePerHour>0.005</nuzzleChancePerHour>
+      <nuzzleChancePerHour>0.01</nuzzleChancePerHour>
       <lifeExpectancy>220</lifeExpectancy>
       <lifeStageAges>
         <li>
@@ -122,6 +130,5 @@
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
     </race>
   </ThingDef>
-
   
 </ThingDefs>

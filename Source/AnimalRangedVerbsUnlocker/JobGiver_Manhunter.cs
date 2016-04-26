@@ -159,7 +159,7 @@ namespace AnimalRangedVerbsUnlocker
 
         private Thing FindTurretTarget(Pawn pawn)
         {
-            return AttackTargetFinder.BestAttackTarget(pawn, (Thing t) => t is Building, 70f, 0f, TargetScanFlags.NeedLOSToPawns | TargetScanFlags.NeedLOSToNonPawns | TargetScanFlags.NeedReachable | TargetScanFlags.OnlyTargetCombatBuildings, default(IntVec3), 3.40282347E+38f);
+            return AttackTargetFinder.BestAttackTarget(pawn, (Thing t) => t is Building, 70f, 0f, TargetScanFlags.NeedLOSToPawns | TargetScanFlags.NeedLOSToNonPawns | TargetScanFlags.NeedReachable, default(IntVec3), 3.40282347E+38f);
         }
     }
 }
