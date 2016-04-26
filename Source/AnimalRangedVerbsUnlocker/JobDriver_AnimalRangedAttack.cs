@@ -12,7 +12,7 @@ namespace AnimalRangedVerbsUnlocker
     {
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            yield return this.Fire(this.TargetThingA).FailOnDespawnedOrForbidden(TargetIndex.A);
+            yield return this.Fire(this.TargetThingA).FailOnDespawnedNullOrForbidden(TargetIndex.A);
             yield break;
         }
 
